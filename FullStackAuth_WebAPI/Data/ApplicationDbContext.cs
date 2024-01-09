@@ -8,6 +8,8 @@ namespace FullStackAuth_WebAPI.Data
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         public DbSet<Car> Cars { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
         public ApplicationDbContext(DbContextOptions options)
     : base(options)

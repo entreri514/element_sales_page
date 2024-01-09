@@ -38,7 +38,8 @@ namespace FullStackAuth_WebAPI.Controllers
 
         // POST: CartItemController/Create
         [HttpPost, Authorize]
-      
+        
+
         public IActionResult Post([FromBody] CartItem item)
         {
             try
@@ -50,6 +51,7 @@ namespace FullStackAuth_WebAPI.Controllers
                 }
                 item.UserId = userId;
                 _context.CartItems.Add(item);
+                _context.Add(item);
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
@@ -83,11 +85,18 @@ namespace FullStackAuth_WebAPI.Controllers
                 return View();
             }
         }
-
+        [HttpDelete("{id}")]
         // GET: CartItemController/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
-            return View();
+            var deleteItem = _context.CartItems.Find(id);
+            if (deleteItem == null)
+            {
+                return NotFound();
+            }
+            _context.CartItems.Remove(deleteItem);
+            _context.SaveChanges();
+            return NoContent();
         }
 
         // POST: CartItemController/Delete/5

@@ -3,7 +3,9 @@ using FullStackAuth_WebAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FullStackAuth_WebAPI.Controllers
 {
@@ -17,11 +19,12 @@ namespace FullStackAuth_WebAPI.Controllers
         {
             _context = context;
         }
-        
+        [HttpGet]
         // GET: CartItemController
-        public ActionResult Index()
+        public IActionResult Get()
         {
-            return View();
+            var getItem = _context.CartItems.ToList();
+            return StatusCode(200, getItem);
         }
 
         // GET: CartItemController/Details/5
@@ -64,11 +67,36 @@ namespace FullStackAuth_WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
+        [HttpPut("{id}")]
         // GET: CartItemController/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Put(int id)
         {
-            return View();
+            try
+            {
+                string userId = User.FindFirstValue("id");
+                var products = _context.CartItems.Where(p => p.UserId.Equals(userId)).ToList();
+                if (products == null)
+                {
+                    return NotFound();
+                }
+                foreach (var product in products)
+                {             
+                    product.OrderComplete = true;
+                }
+                if (!ModelState.IsValid)
+                {
+                   
+                    return BadRequest(ModelState);
+                }
+                _context.SaveChanges();
+
+                return StatusCode(201, products);
+            }
+            catch (Exception ex)
+            {
+                // Return a 500 Internal Server Error with the error message if an exception occurs
+                return StatusCode(500, ex.Message);
+            }
         }
 
         // POST: CartItemController/Edit/5

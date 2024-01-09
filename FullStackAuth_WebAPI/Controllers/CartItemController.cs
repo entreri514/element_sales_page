@@ -67,9 +67,9 @@ namespace FullStackAuth_WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        [HttpPut("{id}")]
+        [HttpPut]
         // GET: CartItemController/Edit/5
-        public IActionResult Put(int id)
+        public IActionResult Put()
         {
             try
             {

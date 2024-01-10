@@ -31,12 +31,6 @@ const HomePage = () => {
     <div className="container">
       {console.log(user)}
       <h1>Home Page for {user.userName}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
-          </p>
-        ))}
     </div>
   );
 };

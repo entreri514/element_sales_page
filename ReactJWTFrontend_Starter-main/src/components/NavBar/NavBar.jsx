@@ -15,6 +15,24 @@ const Navbar = () => {
             <b>Elemental</b>
           </Link>
         </li>
+        <li className="coins">
+          <Link to="/coins" style={{ textDecoration: "none", color: "white" }}>
+            <b>Coins</b>
+          </Link>
+        </li>
+        <li className="products">
+          <Link
+            to="/products"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <b>Products</b>
+          </Link>
+        </li>
+        <li className="plasma">
+          <Link to="/plasma" style={{ textDecoration: "none", color: "white" }}>
+            <b>Plasma</b>
+          </Link>
+        </li>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

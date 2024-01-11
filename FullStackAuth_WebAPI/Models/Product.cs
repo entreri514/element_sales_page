@@ -7,8 +7,9 @@ namespace FullStackAuth_WebAPI.Models
         [Key]
         public int Id { get; set; }
 
-        public int AtomicNumber { get; set; }
 
+        public int AtomicNumber { get; set; }
+        public string Name { get; set; }
         public string ItemPic { get; set; }
 
         public double Price { get; set; }
@@ -20,6 +21,9 @@ namespace FullStackAuth_WebAPI.Models
         public string ProductCare { get; set; }
 
         public string ItemType { get; set; }
-        
+        public string Symbol { get; set; }
+        public string Density { get; set; }
+        public string MeltingPoint { get; set; }
+        public string BoilingPoint { get; set; }
     }
 }

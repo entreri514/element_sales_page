@@ -3,6 +3,7 @@ using System;
 using FullStackAuth_WebAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FullStackAuth_WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240110205546_ProductUpdate")]
+    partial class ProductUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,12 +82,6 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.Property<int>("AtomicNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("BoilingPoint")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Density")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
@@ -94,12 +91,6 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.Property<string>("ItemType")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("MeltingPoint")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext");
-
                     b.Property<double>("Price")
                         .HasColumnType("double");
 
@@ -107,9 +98,6 @@ namespace FullStackAuth_WebAPI.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("ProductInfo")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Symbol")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -218,13 +206,13 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3617ace0-6073-4cc7-b11e-a4b3fe60fa53",
+                            Id = "8a92cff3-57cb-492b-90d4-4e88d42e2763",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "47f761b5-1df6-42dd-8d47-ff275491cf7a",
+                            Id = "07c26922-90f2-4784-8bc7-bc4c6fb96291",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

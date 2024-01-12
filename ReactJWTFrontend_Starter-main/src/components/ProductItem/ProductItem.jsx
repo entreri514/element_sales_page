@@ -8,7 +8,7 @@ const ProductItem = () => {
   const { atomicNumber } = useParams();
   const [item, setItem] = useState([]);
   const [user, token] = useAuth();
-  console.log(`https://localhost:5001/api/products/${atomicNumber}`);
+
   useEffect(() => {
     getItem();
   }, []);

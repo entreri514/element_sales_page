@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
+import CartPage from "./pages/CartPage/CartPage";
 import ProductItem from "./components/ProductItem/ProductItem";
 
 // Component Imports
@@ -33,6 +34,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/products" element={<ProductPage />} />
         <Route path="/item/:atomicNumber" element={<ProductItem />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
       <Footer />
     </div>

@@ -33,6 +33,11 @@ const Navbar = () => {
             <b>Plasma</b>
           </Link>
         </li>
+        <li className="cart">
+          <Link to="/cart" style={{ textDecoration: "none", color: "white" }}>
+            <b>Cart</b>
+          </Link>
+        </li>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

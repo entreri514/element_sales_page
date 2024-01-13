@@ -3,12 +3,14 @@ using FullStackAuth_WebAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.Security.Claims;
 using ZstdSharp.Unsafe;
 
 namespace FullStackAuth_WebAPI.Controllers
 {
     [Route("api/[controller]")]
+   
     [ApiController]
     public class ProductsController : Controller
     {
@@ -28,6 +30,7 @@ namespace FullStackAuth_WebAPI.Controllers
 
         // GET: Products/5
         [HttpGet("{atomicNumber}")]
+        
         public IActionResult GetByAtomicNumber(int atomicNumber)
         // {
         //     var getItem = _context.Products.Find(id);
@@ -38,19 +41,38 @@ namespace FullStackAuth_WebAPI.Controllers
 
         //     return StatusCode(200,getItem);
         // }
-       {    
-            try
-            {
-                var searchResult = _context.Products.Where(p => p.AtomicNumber.Equals(atomicNumber));
-                return StatusCode(200, searchResult);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+       {
+           
+                try
+                {
+                    var searchResult = _context.Products.Where(p => p.AtomicNumber.Equals(atomicNumber));
+                    return StatusCode(200, searchResult);
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, ex.Message);
+                }
+            
         }
-
+        //        [HttpGet("{itemType}")]
+//        public IActionResult GetByItemType(string itemType)
         // GET: ProductsController/Create
+        
+ //       {
+ //           try
+ //           {
+ //               var searchResult = _context.Products.Where(p => p.ItemType.Equals(itemType));
+ //               return StatusCode(200, searchResult);
+ //           }
+ //           catch (Exception ex)
+ //           {
+ //               return StatusCode(500, ex.Message);
+ //           }
+ //       }
+
+        
+
+
         public ActionResult Create()
         {
             return View();

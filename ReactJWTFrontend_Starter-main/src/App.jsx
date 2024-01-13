@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import CartPage from "./pages/CartPage/CartPage";
+import CoinPage from "./pages/CoinPage/CoinPage";
 import ProductItem from "./components/ProductItem/ProductItem";
 
 // Component Imports
@@ -35,6 +36,7 @@ function App() {
         <Route path="/products" element={<ProductPage />} />
         <Route path="/item/:atomicNumber" element={<ProductItem />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/coins" element={<CoinPage />} />
       </Routes>
       <Footer />
     </div>

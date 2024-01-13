@@ -25,7 +25,9 @@ const ProductItem = () => {
       console.warn("Error submitting form ", error);
     }
   };
+
   let thumb = `/pics/${item.itemPic}.jpg`;
+
   console.log(thumb);
   if (!item) {
     return null;

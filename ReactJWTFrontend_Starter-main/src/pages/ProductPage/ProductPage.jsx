@@ -25,7 +25,11 @@ const ProductPage = ({}) => {
     {
       console.log(product);
     }
-    return <Link to={`/item/${product.atomicNumber}`}>{product.name}</Link>;
+    return (
+      <p>
+        <Link to={`/item/${product.atomicNumber}`}>{product.name}</Link>
+      </p>
+    );
   });
   return (
     <div>

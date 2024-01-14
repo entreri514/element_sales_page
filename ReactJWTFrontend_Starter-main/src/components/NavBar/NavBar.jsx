@@ -7,6 +7,7 @@ import "./NavBar.css";
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  var getType = "Ingot";
   return (
     <div className="navBar">
       <ul>
@@ -15,7 +16,7 @@ const Navbar = () => {
             <b>Elemental</b>
           </Link>
         </li>
-        <li className="coins">
+        <li className="type">
           <Link to="/coins" style={{ textDecoration: "none", color: "white" }}>
             <b>Coins</b>
           </Link>
@@ -28,8 +29,11 @@ const Navbar = () => {
             <b>Products</b>
           </Link>
         </li>
-        <li className="plasma">
-          <Link to="/plasma" style={{ textDecoration: "none", color: "white" }}>
+        <li className="type">
+          <Link
+            to="/plasmas"
+            style={{ textDecoration: "none", color: "white" }}
+          >
             <b>Plasma</b>
           </Link>
         </li>

@@ -2,8 +2,52 @@ import React, { useState, useEffect } from "react";
 import App from "../../App";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 const CoinPage = ({}) => {
-  return <div></div>;
+  const [coins, setCoins] = useState([]);
+  useEffect(() => {
+    getCoins();
+  }, []);
+
+  const getCoins = async (e) => {
+    try {
+      const response = await axios.get(`https://localhost:5001/api/products/`);
+      console.log(response.data);
+      if (response.status === 200) {
+        setCoins(response.data);
+      }
+    } catch (error) {
+      console.warn("Unable to retreive product data: ", error);
+    }
+  };
+
+  const getResults = coins
+    .filter((coin) => coin.itemType.includes("Coin"))
+    .map((coin, index) => {
+      {
+        console.log(coin);
+        let thumb = `/pics/${coin.itemPic}.jpg`;
+      }
+      return (
+        <b>
+          <Link to={`/item/${coin.atomicNumber}`}>
+            <img
+              src={`/pics/${coin.itemPic}.jpg`}
+              alt="image"
+              width="200"
+              height="250"
+            />
+          </Link>
+        </b>
+      );
+    });
+  return (
+    <div>
+      <h2>Our Coins!</h2>
+
+      <div>{getResults}</div>
+    </div>
+  );
 };
 
 export default CoinPage;

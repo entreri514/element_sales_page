@@ -2,34 +2,33 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const CoinPage = ({}) => {
-  const [coins, setCoins] = useState([]);
+const PlasmaPage = ({}) => {
+  const [plasmas, setPlasmas] = useState([]);
   useEffect(() => {
-    getCoins();
+    getPlasmas();
   }, []);
 
-  const getCoins = async (e) => {
+  const getPlasmas = async (e) => {
     try {
       const response = await axios.get(`https://localhost:5001/api/products/`);
       if (response.status === 200) {
-        setCoins(response.data);
+        setPlasmas(response.data);
       }
     } catch (error) {
       console.warn("Unable to retreive product data: ", error);
     }
   };
-
-  const getResults = coins
-    .filter((coin) => coin.itemType.includes("Coin"))
-    .map((coin, index) => {
+  const getResults = plasmas
+    .filter((plasma) => plasma.itemType.includes("Plasma"))
+    .map((plasma, index) => {
       {
-        console.log(coin);
+        console.log(plasma);
       }
       return (
         <b>
-          <Link to={`/item/${coin.atomicNumber}`}>
+          <Link to={`/item/${plasma.atomicNumber}`}>
             <img
-              src={`/pics/${coin.itemPic}.jpg`}
+              src={`/pics/${plasma.itemPic}.jpg`}
               alt="image"
               width="200"
               height="250"
@@ -40,11 +39,13 @@ const CoinPage = ({}) => {
     });
   return (
     <div>
-      <h2>Our Coins!</h2>
+      <div>
+        <h2>Plasma Page</h2>
 
-      <div>{getResults}</div>
+        <div>{getResults}</div>
+      </div>
     </div>
   );
 };
 
-export default CoinPage;
+export default PlasmaPage;

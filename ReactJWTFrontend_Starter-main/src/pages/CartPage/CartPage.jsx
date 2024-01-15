@@ -10,7 +10,7 @@ const CartPage = ({}) => {
   useEffect(() => {
     getCart();
   }, []);
-
+  <div></div>;
   const getCart = async () => {
     try {
       const response = await axios.get(

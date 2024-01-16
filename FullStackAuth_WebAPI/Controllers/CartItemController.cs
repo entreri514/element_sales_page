@@ -89,6 +89,31 @@ namespace FullStackAuth_WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [HttpPost("myCart"),Authorize]
+        public IActionResult PostTwo(CartItem item)
+        {
+            try
+            {
+                string userId = User.FindFirstValue("id");
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized();
+                }
+                item.UserId = userId;
+                _context.CartItems.Add(item);
+                _context.Add(item);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                _context.SaveChanges();
+                return StatusCode(201, item);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
         [HttpPut]
         // GET: CartItemController/Edit/5
         public IActionResult Put()

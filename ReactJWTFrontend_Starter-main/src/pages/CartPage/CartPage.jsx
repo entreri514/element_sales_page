@@ -19,7 +19,7 @@ const CartPage = ({}) => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState([]);
   const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
-  var options = window.stripe.elements({ clientSecret: "CLIENT_SECRET" });
+  //var options = stripe.elements({ clientSecret: "CLIENT_SECRET" });
 
   useEffect(() => {
     getCart();
@@ -53,6 +53,20 @@ const CartPage = ({}) => {
     } catch (error) {
       console.warn("Unable to complete order: ", error);
     }
+    const formData = products.productInfo;
+    try {
+      const response = await axios.post(
+        `https://localhost:5001/api/cartitem/myCart`,
+        formData,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+    } catch (error) {
+      console.warn("Unable to complete request: ", error);
+    }
   };
 
   function gatherTotalPrice(totalPrice, product) {
@@ -79,9 +93,6 @@ const CartPage = ({}) => {
       <p>{getResults}</p>
       <p>Your Current Total: ${totalPrice}.00</p>
       <button className="btn btn-primary" type="submit" onClick={handleSubmit}>
-        <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm />
-        </Elements>
         Order Complete
       </button>
     </div>

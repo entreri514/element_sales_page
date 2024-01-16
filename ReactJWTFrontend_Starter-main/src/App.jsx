@@ -10,11 +10,11 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 import CartPage from "./pages/CartPage/CartPage";
 import CoinPage from "./pages/CoinPage/CoinPage";
 import PlasmaPage from "./pages/PlasmaPage/PlasmaPage";
-import ProductItem from "./components/ProductItem/ProductItem";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import ProductItem from "./components/ProductItem/ProductItem";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";

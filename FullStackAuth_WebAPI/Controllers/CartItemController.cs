@@ -37,7 +37,7 @@ namespace FullStackAuth_WebAPI.Controllers
                 string userId = User.FindFirstValue("id");
 
                 // Retrieve all cartitems that belong to the authenticated user, select the related product objects
-                var productsInCart = _context.CartItems.Where(c => c.UserId.Equals(userId)).Select(c => c.Product).ToList();
+                var productsInCart = _context.CartItems.Where(c => c.UserId.Equals(userId) && c.OrderComplete == false).Select(c => c.Product).ToList();
 
                 // Return the list of cars as a 200 OK response
                 return StatusCode(200, productsInCart);
@@ -89,8 +89,8 @@ namespace FullStackAuth_WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        [HttpPost("myCart"),Authorize]
-        public IActionResult PostTwo(CartItem item)
+        [HttpPost("myCart")]
+        public IActionResult SaveOrderHistory([FromBody] CartItem item)
         {
             try
             {
@@ -100,6 +100,7 @@ namespace FullStackAuth_WebAPI.Controllers
                     return Unauthorized();
                 }
                 item.UserId = userId;
+                
                 _context.CartItems.Add(item);
                 _context.Add(item);
                 if (!ModelState.IsValid)

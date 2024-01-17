@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 
 const ProductPage = ({}) => {
   const [products, setProducts] = useState([]);
-
+  const [search, setSearch] = useState("");
   useEffect(() => {
     getProduct();
   }, []);
@@ -23,7 +23,6 @@ const ProductPage = ({}) => {
 
   const getResults = products.map((product, index) => {
     {
-      console.log(product);
     }
     return (
       <p>
@@ -31,11 +30,32 @@ const ProductPage = ({}) => {
       </p>
     );
   });
+  function priceSearch(e) {
+    e.preventDefault();
+    const searchResults = products.filter((product) => {
+      let diff = product.price - search;
+      return (diff <= 10 && diff >= 0) || (diff <= -10 && diff >= -10);
+    });
+
+    console.log(searchResults);
+    setProducts(searchResults);
+  }
   return (
     <div>
       <h2>Our Products</h2>
 
       <div>{getResults}</div>
+      <form onSubmit={priceSearch}>
+        <label className="form-label">
+          Price Search
+          <input
+            type="text"
+            className="form-control"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </label>
+      </form>
     </div>
   );
 };

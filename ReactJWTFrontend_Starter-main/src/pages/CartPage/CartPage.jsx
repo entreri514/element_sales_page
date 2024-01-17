@@ -35,7 +35,7 @@ const CartPage = ({}) => {
           },
         }
       );
-
+      console.log(response.data);
       if (response.status === 200) {
         setProducts(response.data);
       }
@@ -45,7 +45,15 @@ const CartPage = ({}) => {
   };
   const handleSubmit = async () => {
     try {
-      const response = await axios.put(`https://localhost:5001/api/cartitem`);
+      const response = await axios.put(
+        `https://localhost:5001/api/cartitem`,
+        {},
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
 
       if (response.status === 201) {
         console.log("Successfully processed");
@@ -53,26 +61,19 @@ const CartPage = ({}) => {
     } catch (error) {
       console.warn("Unable to complete order: ", error);
     }
-    const formData = products.productInfo;
-    try {
-      const response = await axios.post(
-        `https://localhost:5001/api/cartitem/myCart`,
-        formData,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-    } catch (error) {
-      console.warn("Unable to complete request: ", error);
-    }
   };
 
   function gatherTotalPrice(totalPrice, product) {
     return totalPrice + product.price;
   }
 
+  function orderHistory() {
+    const completeResults = products.filter((product) =>
+      product.orderComplete.includes(true)
+    );
+    console.log("old orders", completeResults);
+    console.log(products);
+  }
   let totalPrice = 0;
   totalPrice = products.reduce(gatherTotalPrice, 0);
 
@@ -94,6 +95,9 @@ const CartPage = ({}) => {
       <p>Your Current Total: ${totalPrice}.00</p>
       <button className="btn btn-primary" type="submit" onClick={handleSubmit}>
         Order Complete
+      </button>
+      <button className="btn btn-primary" type="submit" onClick={orderHistory}>
+        View Order History
       </button>
     </div>
   );

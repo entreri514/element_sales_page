@@ -35,7 +35,25 @@ const CartPage = ({}) => {
           },
         }
       );
-      console.log(response.data);
+
+      if (response.status === 200) {
+        setProducts(response.data);
+      }
+    } catch (error) {
+      console.warn("Unable to retreive cart data: ", error);
+    }
+  };
+  const orderHistory = async () => {
+    try {
+      const response = await axios.get(
+        `https://localhost:5001/api/cartitem/myHistory`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
       if (response.status === 200) {
         setProducts(response.data);
       }
@@ -67,13 +85,6 @@ const CartPage = ({}) => {
     return totalPrice + product.price;
   }
 
-  function orderHistory() {
-    const completeResults = products.filter((product) =>
-      product.orderComplete.includes(true)
-    );
-    console.log("old orders", completeResults);
-    console.log(products);
-  }
   let totalPrice = 0;
   totalPrice = products.reduce(gatherTotalPrice, 0);
 

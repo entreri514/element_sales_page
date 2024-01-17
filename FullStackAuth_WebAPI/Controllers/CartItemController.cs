@@ -49,6 +49,27 @@ namespace FullStackAuth_WebAPI.Controllers
             }
         }
 
+
+        [HttpGet("myHistory"), Authorize]
+        public IActionResult GetOrderHistory()
+        {
+            try
+            {
+                // Retrieve the authenticated user's ID from the JWT token
+                string userId = User.FindFirstValue("id");
+
+                // Retrieve all cartitems that belong to the authenticated user, select the related product objects
+                var productsInCart = _context.CartItems.Where(c => c.UserId.Equals(userId) && c.OrderComplete == true).Select(c => c.Product).ToList();
+
+                // Return the list of cars as a 200 OK response
+                return StatusCode(200, productsInCart);
+            }
+            catch (Exception ex)
+            {
+                // If an error occurs, return a 500 internal server error with the error message
+                return StatusCode(500, ex.Message);
+            }
+        }
         // GET: CartItemController/Details/5
         public ActionResult Details(int id)
         {

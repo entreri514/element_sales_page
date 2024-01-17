@@ -34,7 +34,7 @@ const ProductPage = ({}) => {
     e.preventDefault();
     const searchResults = products.filter((product) => {
       let diff = product.price - search;
-      return (diff <= 10 && diff >= 0) || (diff <= -10 && diff >= -10);
+      return diff <= 10 && diff >= -10;
     });
 
     console.log(searchResults);

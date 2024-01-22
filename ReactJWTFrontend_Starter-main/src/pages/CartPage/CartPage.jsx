@@ -79,6 +79,12 @@ const CartPage = ({}) => {
     } catch (error) {
       console.warn("Unable to complete order: ", error);
     }
+
+    const paypalauth = async () => {
+      const response = await axios.post(
+        `https://sandbox.paypal.com/v2/checkout/orders`
+      );
+    };
   };
 
   function gatherTotalPrice(totalPrice, product) {

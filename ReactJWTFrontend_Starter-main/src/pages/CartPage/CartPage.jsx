@@ -5,22 +5,13 @@ import useAuth from "../../hooks/useAuth";
 import ProductItem from "../../components/ProductItem/ProductItem";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import {
-  useStripe,
-  useElements,
-  PaymentElement,
-} from "@stripe/react-stripe-js";
+import PayPalPayment from "../../components/PayPalPayment/PayPalPayment";
 
 const CartPage = ({}) => {
   const [user, token] = useAuth();
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState([]);
-  const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
-  //var options = stripe.elements({ clientSecret: "CLIENT_SECRET" });
-
+  const [checkout, setCheckout] = useState(false);
   useEffect(() => {
     getCart();
   }, []);
@@ -75,6 +66,7 @@ const CartPage = ({}) => {
 
       if (response.status === 201) {
         console.log("Successfully processed");
+        setCheckout(true);
       }
     } catch (error) {
       console.warn("Unable to complete order: ", error);
@@ -110,9 +102,17 @@ const CartPage = ({}) => {
       <h1>{user.userName}'s Cart</h1>
       <p>{getResults}</p>
       <p>Your Current Total: ${totalPrice}.00</p>
-      <button className="btn btn-primary" type="submit" onClick={handleSubmit}>
-        Order Complete
-      </button>
+      {checkout ? (
+        <PayPalPayment price={totalPrice} />
+      ) : (
+        <button
+          className="btn btn-primary"
+          type="submit"
+          onClick={handleSubmit}
+        >
+          Order Complete
+        </button>
+      )}
       <button className="btn btn-primary" type="submit" onClick={orderHistory}>
         View Order History
       </button>

@@ -16,9 +16,11 @@ import PlasmaPage from "./pages/PlasmaPage/PlasmaPage";
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import ProductItem from "./components/ProductItem/ProductItem";
+import PayPalPayment from "./components/PayPalPayment/PayPalPayment";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function App() {
   return (
@@ -41,6 +43,7 @@ function App() {
         <Route path="/coins" element={<CoinPage />} />
         <Route path="/plasmas" element={<PlasmaPage />} />
       </Routes>
+
       <Footer />
     </div>
   );

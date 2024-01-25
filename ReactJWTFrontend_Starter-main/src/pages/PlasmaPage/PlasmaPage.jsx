@@ -21,9 +21,6 @@ const PlasmaPage = ({}) => {
   const getResults = plasmas
     .filter((plasma) => plasma.itemType.includes("Plasma"))
     .map((plasma, index) => {
-      {
-        console.log(plasma);
-      }
       return (
         <p>
           <b>

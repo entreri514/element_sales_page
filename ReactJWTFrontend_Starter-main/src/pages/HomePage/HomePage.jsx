@@ -28,9 +28,10 @@ const HomePage = () => {
   };
 
   return (
-    <div className="container">
+    <div>
       {console.log(user)}
       <h1>Home Page for {user.userName}!</h1>
+      <img src={"/pics/img100.png"} alt="image" width="1920" height="700" />
     </div>
   );
 };

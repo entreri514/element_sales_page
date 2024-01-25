@@ -22,9 +22,6 @@ const CoinPage = ({}) => {
   const getResults = coins
     .filter((coin) => coin.itemType.includes("Coin"))
     .map((coin, index) => {
-      {
-        console.log(coin);
-      }
       return (
         <b>
           <Link to={`/item/${coin.atomicNumber}`}>

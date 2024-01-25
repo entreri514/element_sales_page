@@ -25,18 +25,21 @@ const PlasmaPage = ({}) => {
         console.log(plasma);
       }
       return (
-        <b>
-          <Link to={`/item/${plasma.atomicNumber}`}>
-            <video
-              autoPlay
-              loop
-              src={`/pics/${plasma.itemPic}.mp4`}
-              alt="video"
-              width="200"
-              height="250"
-            />
-          </Link>
-        </b>
+        <p>
+          <b>
+            <Link to={`/item/${plasma.atomicNumber}`}>
+              <video
+                autoPlay
+                loop
+                src={`/pics/${plasma.itemPic}.mp4`}
+                alt="video"
+                width="200"
+                height="250"
+              />
+            </Link>{" "}
+            {plasma.name}${plasma.price}.00
+          </b>
+        </p>
       );
     });
   return (

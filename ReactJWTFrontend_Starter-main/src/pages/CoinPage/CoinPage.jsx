@@ -35,6 +35,7 @@ const CoinPage = ({}) => {
               height="250"
             />
           </Link>
+          {coin.name}${coin.price}.00
         </b>
       );
     });

@@ -27,7 +27,7 @@ const ProductItem = () => {
   };
 
   let thumb = `/pics/${item.itemPic}.jpg`;
-
+  if (item.itemType === "Plasma") thumb = `/pics/${item.itemPic}.mp4`;
   console.log(thumb);
   if (!item) {
     return null;
@@ -58,8 +58,19 @@ const ProductItem = () => {
   return (
     <div>
       <h2>{item.name}</h2>
-      <img src={thumb} alt="image" width="400" height="500" />
-
+      {item.itemType === "Plasma" ? (
+        <video
+          autoPlay
+          loop
+          src={thumb}
+          alt="video"
+          width="400"
+          height="500"
+          controls
+        />
+      ) : (
+        <img src={thumb} alt="image" width="400" height="500" />
+      )}
       <h5>Atomic number: {item.atomicNumber}</h5>
       <h5>Symbol: {item.symbol}</h5>
       <h5>Product: {item.productInfo}</h5>

@@ -27,9 +27,11 @@ const PlasmaPage = ({}) => {
       return (
         <b>
           <Link to={`/item/${plasma.atomicNumber}`}>
-            <img
-              src={`/pics/${plasma.itemPic}.jpg`}
-              alt="image"
+            <video
+              autoPlay
+              loop
+              src={`/pics/${plasma.itemPic}.mp4`}
+              alt="video"
               width="200"
               height="250"
             />

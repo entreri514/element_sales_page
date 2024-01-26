@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./CoinPage.css";
 
 const CoinPage = ({}) => {
   const [coins, setCoins] = useState([]);
@@ -23,7 +24,7 @@ const CoinPage = ({}) => {
     .filter((coin) => coin.itemType.includes("Coin"))
     .map((coin, index) => {
       return (
-        <b>
+        <a>
           <Link to={`/item/${coin.atomicNumber}`}>
             <img
               src={`/pics/${coin.itemPic}.jpg`}
@@ -32,15 +33,16 @@ const CoinPage = ({}) => {
               height="250"
             />
           </Link>
-          {coin.name}${coin.price}.00
-        </b>
+          <h5> {coin.name}</h5>
+          <h6>${coin.price}.00</h6>
+        </a>
       );
     });
   return (
     <div>
-      <h2>Our Coins!</h2>
+      <h1 className="text-align">Our Coins!</h1>
 
-      <div>{getResults}</div>
+      <div className="product-grid">{getResults}</div>
     </div>
   );
 };

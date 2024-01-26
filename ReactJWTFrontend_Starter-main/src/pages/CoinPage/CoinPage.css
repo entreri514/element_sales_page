@@ -1,0 +1,9 @@
+.product-grid {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(6, 1fr);
+}
+.text-align {
+  color: gold;
+  text-align: center;
+}

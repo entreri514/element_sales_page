@@ -30,12 +30,12 @@ const PlasmaPage = ({}) => {
                 loop
                 src={`/pics/${plasma.itemPic}.mp4`}
                 alt="video"
-                width="200"
-                height="250"
+                width="100"
+                height="100"
               />
             </Link>{" "}
-            {plasma.name}${plasma.price}.00
           </b>
+          {plasma.name}${plasma.price}.00
         </p>
       );
     });

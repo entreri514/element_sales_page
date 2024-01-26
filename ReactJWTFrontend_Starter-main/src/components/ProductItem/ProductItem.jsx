@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+import "./ProductItem.css";
 import useAuth from "../../hooks/useAuth";
 
 const ProductItem = () => {
@@ -56,7 +56,7 @@ const ProductItem = () => {
   };
 
   return (
-    <div>
+    <div className="product-details">
       <h2>{item.name}</h2>
       {item.itemType === "Plasma" ? (
         <video

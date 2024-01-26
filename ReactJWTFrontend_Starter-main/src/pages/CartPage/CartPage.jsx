@@ -1,17 +1,14 @@
-import App from "../../App";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-import ProductItem from "../../components/ProductItem/ProductItem";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import PayPalPayment from "../../components/PayPalPayment/PayPalPayment";
-
+import "./CartPage.css";
 const CartPage = ({}) => {
   const [user, token] = useAuth();
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState([]);
   const [checkout, setCheckout] = useState(false);
+  let viewOrderHistory = false;
   useEffect(() => {
     getCart();
   }, []);
@@ -47,6 +44,7 @@ const CartPage = ({}) => {
 
       if (response.status === 200) {
         setProducts(response.data);
+        viewOrderHistory = true;
       }
     } catch (error) {
       console.warn("Unable to retreive cart data: ", error);
@@ -101,21 +99,27 @@ const CartPage = ({}) => {
     <div>
       <h1>{user.userName}'s Cart</h1>
       <p>{getResults}</p>
-      <p>Your Current Total: ${totalPrice}.00</p>
-      {checkout ? (
-        <PayPalPayment price={totalPrice} />
-      ) : (
+      {viewOrderHistory ? <p>Your Current Total: ${totalPrice}.00</p> : <p></p>}
+      <div className="button-flex">
+        {checkout ? (
+          <PayPalPayment price={totalPrice} />
+        ) : (
+          <button
+            className="btn btn-primary"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Order Complete
+          </button>
+        )}
         <button
-          className="btn btn-primary"
+          className="btn btn-secondary"
           type="submit"
-          onClick={handleSubmit}
+          onClick={orderHistory}
         >
-          Order Complete
+          View Order History
         </button>
-      )}
-      <button className="btn btn-primary" type="submit" onClick={orderHistory}>
-        View Order History
-      </button>
+      </div>
     </div>
   );
 };

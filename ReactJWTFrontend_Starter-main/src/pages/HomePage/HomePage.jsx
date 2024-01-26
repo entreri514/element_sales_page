@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-
+import "./HomePage.css";
 import axios from "axios";
 
 const HomePage = () => {
@@ -28,7 +28,7 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div className="text">
       {console.log(user)}
       <h1>Home Page for {user.userName}!</h1>
       <img src={"/pics/img100.png"} alt="image" width="1920" height="700" />

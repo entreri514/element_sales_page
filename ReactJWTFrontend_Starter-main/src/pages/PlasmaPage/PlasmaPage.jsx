@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./PlasmaPage.css";
 
 const PlasmaPage = ({}) => {
   const [plasmas, setPlasmas] = useState([]);
@@ -30,21 +31,22 @@ const PlasmaPage = ({}) => {
                 loop
                 src={`/pics/${plasma.itemPic}.mp4`}
                 alt="video"
-                width="100"
-                height="100"
+                width="200"
+                height="250"
               />
             </Link>{" "}
           </b>
-          {plasma.name}${plasma.price}.00
+          <h5>{plasma.name}</h5>
+          <h6>${plasma.price}.00</h6>
         </p>
       );
     });
   return (
     <div>
       <div>
-        <h2>Plasma Page</h2>
+        <h2 className="text-align1">Plasma Page</h2>
 
-        <div>{getResults}</div>
+        <div className="product-grid1">{getResults}</div>
       </div>
     </div>
   );

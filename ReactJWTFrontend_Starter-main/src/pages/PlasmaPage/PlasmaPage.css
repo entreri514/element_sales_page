@@ -1,0 +1,10 @@
+.product-grid1 {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(6, 1fr);
+}
+.text-align1 {
+  color: orangered;
+  text-align: center;
+  margin: 2rem;
+}

@@ -40,7 +40,7 @@ const CoinPage = ({}) => {
     });
   return (
     <div>
-      <h1 className="text-align">Our Coins!</h1>
+      <h2 className="text-align">Our Coins!</h2>
 
       <div className="product-grid">{getResults}</div>
     </div>

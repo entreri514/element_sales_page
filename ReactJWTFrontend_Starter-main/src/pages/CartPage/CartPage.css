@@ -1,6 +1,33 @@
-.button-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+.head-color {
+  color: green;
+  text-align: center;
   margin: 2rem;
+}
+.cart-box {
+  max-width: 400;
+  justify-content: space-between;
+  text-align: center;
+}
+.button-flex {
+  box-sizing: inherit;
+  margin: 2rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.btn-primary {
+  background-color: maroon;
+  margin: 2rem;
+  color: azure;
+  text-align: center;
+  display: inline;
+  border-radius: 12px;
+}
+.btn-secondary {
+  background-color: rgb(128, 128, 0);
+  margin: 2rem;
+  color: azure;
+  text-align: center;
+  display: inline;
+  border-radius: 12px;
 }

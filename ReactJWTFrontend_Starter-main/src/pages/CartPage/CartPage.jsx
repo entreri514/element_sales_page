@@ -97,28 +97,34 @@ const CartPage = ({}) => {
 
   return (
     <div>
-      <h1>{user.userName}'s Cart</h1>
-      <p>{getResults}</p>
-      {viewOrderHistory ? <p>Your Current Total: ${totalPrice}.00</p> : <p></p>}
-      <div className="button-flex">
-        {checkout ? (
-          <PayPalPayment price={totalPrice} />
+      <h1 className="head-color">{user.userName}'s Cart</h1>
+      <div className="cart-box">
+        <p>{getResults}</p>
+        {viewOrderHistory ? (
+          <p>Your Current Total: ${totalPrice}.00</p>
         ) : (
-          <button
-            className="btn btn-primary"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            Order Complete
-          </button>
+          <p></p>
         )}
-        <button
-          className="btn btn-secondary"
-          type="submit"
-          onClick={orderHistory}
-        >
-          View Order History
-        </button>
+        <div className="button-flex">
+          {checkout ? (
+            <PayPalPayment price={totalPrice} />
+          ) : (
+            <button
+              className="btn-primary"
+              type="submit"
+              onClick={handleSubmit}
+            >
+              Order Complete
+            </button>
+          )}
+          <button
+            className="btn-secondary"
+            type="submit"
+            onClick={orderHistory}
+          >
+            View Order History
+          </button>
+        </div>
       </div>
     </div>
   );

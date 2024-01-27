@@ -57,7 +57,7 @@ const ProductItem = () => {
 
   return (
     <div className="product-details">
-      <h2>{item.name}</h2>
+      <h2 className="title-item">{item.name}</h2>
       {item.itemType === "Plasma" ? (
         <video
           autoPlay
@@ -65,23 +65,25 @@ const ProductItem = () => {
           src={thumb}
           alt="video"
           width="400"
-          height="500"
+          height="450"
           controls
         />
       ) : (
-        <img src={thumb} alt="image" width="400" height="500" />
+        <img src={thumb} alt="image" width="350" height="450" />
       )}
-      <h5>Atomic number: {item.atomicNumber}</h5>
-      <h5>Symbol: {item.symbol}</h5>
-      <h5>Product: {item.productInfo}</h5>
-      <h5>Care: {item.productCare}</h5>
-      <h5>Density: {item.density}</h5>
-      <h5>Melting Point: {item.meltingPoint}</h5>
-      <h5>Boiling Point: {item.boilingPoint}</h5>
-      <div></div>
-      <h3>Price: ${item.price}.00</h3>
+      <div className="product-description">
+        <h5>Atomic number: {item.atomicNumber}</h5>
+        <h5>Symbol: {item.symbol}</h5>
+        <h5>Product: {item.productInfo}</h5>
+        <h5>Care: {item.productCare}</h5>
+        <h5>Density: {item.density}</h5>
+        <h5>Melting Point: {item.meltingPoint}</h5>
+        <h5>Boiling Point: {item.boilingPoint}</h5>
+        <div></div>
+        <h3>Price: ${item.price}.00</h3>
+      </div>
 
-      <button className="btn btn-primary" type="submit" onClick={handleSubmit}>
+      <button className="btn-add" type="submit" onClick={handleSubmit}>
         Add to Cart
       </button>
     </div>

@@ -33,8 +33,8 @@ const ProductPage = ({}) => {
   function priceSearch(e) {
     e.preventDefault();
     const searchResults = products.filter((product) => {
-      let diff = product.price - search;
-      return diff <= 10 && diff >= -10;
+      let diff = Math.abs(product.price - search);
+      return diff <= 10;
     });
 
     console.log(searchResults);
@@ -45,6 +45,7 @@ const ProductPage = ({}) => {
       <h2>Our Products</h2>
 
       <div>{getResults}</div>
+
       <form onSubmit={priceSearch}>
         <label className="form-label">
           Price Search

@@ -1,5 +1,18 @@
 .product-details {
-  display: ruby;
-  justify-content: center;
-  margin: 1rem;
+  display: block;
+  text-align: center;
+}
+.product-description {
+  text-align: unset;
+}
+.btn-add {
+  background-color: maroon;
+  margin: 2rem;
+  color: azure;
+  text-align: center;
+  display: inline;
+  border-radius: 12px;
+}
+.title-item {
+  color: steelblue;
 }

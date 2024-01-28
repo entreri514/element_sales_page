@@ -2,6 +2,7 @@ import App from "../../App";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import "./ProductPage.css";
 
 const ProductPage = ({}) => {
   const [products, setProducts] = useState([]);
@@ -25,15 +26,17 @@ const ProductPage = ({}) => {
     {
     }
     return (
-      <p>
+      <p className="list-style">
         <Link to={`/item/${product.atomicNumber}`}>{product.name}</Link>
+        <div className="price">${product.price}.00</div>
       </p>
     );
   });
   function priceSearch(e) {
     e.preventDefault();
+    let diff = 0;
     const searchResults = products.filter((product) => {
-      let diff = Math.abs(product.price - search);
+      diff = Math.abs(product.price - search);
       return diff <= 10;
     });
 
@@ -42,7 +45,7 @@ const ProductPage = ({}) => {
   }
   return (
     <div>
-      <h2>Our Products</h2>
+      <h2 className="product-title">Our Products</h2>
 
       <div>{getResults}</div>
 

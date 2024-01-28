@@ -1,3 +1,12 @@
+* *::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
   box-sizing: border-box;
   background-color: black;
@@ -7,4 +16,8 @@ main {
   margin: 0 auto;
   display: grid;
   place-content: center;
+  margin-bottom: 200px;
+}
+body {
+  margin-bottom: 100px;
 }

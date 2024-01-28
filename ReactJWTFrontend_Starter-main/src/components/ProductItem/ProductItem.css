@@ -3,15 +3,28 @@
   text-align: center;
 }
 .product-description {
-  text-align: unset;
+  flex-wrap: initial;
+  text-align: center;
 }
 .btn-add {
+  box-sizing: border-box;
   background-color: maroon;
   margin: 2rem;
   color: azure;
   text-align: center;
   display: inline;
   border-radius: 12px;
+  margin-bottom: 100px;
+}
+.btn-isadd {
+  box-sizing: border-box;
+  background-color: forestgreen;
+  margin: 2rem;
+  color: azure;
+  text-align: center;
+  display: inline;
+  border-radius: 12px;
+  margin-bottom: 100px;
 }
 .title-item {
   color: steelblue;

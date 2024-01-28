@@ -1,0 +1,12 @@
+.product-title {
+  text-align: center;
+  margin: 2rem;
+}
+.list-style {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(15, 1fr);
+}
+.price {
+  color: blue;
+}

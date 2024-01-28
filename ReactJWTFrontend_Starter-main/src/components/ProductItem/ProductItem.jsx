@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 const ProductItem = () => {
   const { atomicNumber } = useParams();
   const [item, setItem] = useState([]);
+  const [isAdd, setIsAdd] = useState(false);
   const [user, token] = useAuth();
 
   useEffect(() => {
@@ -33,26 +34,29 @@ const ProductItem = () => {
     return null;
   }
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    let productId = item.id;
-    console.log(item.id);
-    const formData = { productId };
-    try {
-      const response = await axios.post(
-        "https://localhost:5001/api/cartitem",
-        formData,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
+    if (!isAdd) {
+      e.preventDefault();
+      let productId = item.id;
+      console.log(item.id);
+      const formData = { productId };
+      try {
+        const response = await axios.post(
+          "https://localhost:5001/api/cartitem",
+          formData,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+        if (response.status === 201) {
+          console.log("Added to cart.");
         }
-      );
-      if (response.status === 201) {
-        console.log("Added to cart.");
+      } catch (error) {
+        console.warn("Unable to add item: ", error);
       }
-    } catch (error) {
-      console.warn("Unable to add item: ", error);
     }
+    setIsAdd(true);
   };
 
   return (
@@ -82,10 +86,15 @@ const ProductItem = () => {
         <div></div>
         <h3>Price: ${item.price}.00</h3>
       </div>
-
-      <button className="btn-add" type="submit" onClick={handleSubmit}>
-        Add to Cart
-      </button>
+      {isAdd ? (
+        <button className="btn-isadd" type="submit">
+          Add to Cart
+        </button>
+      ) : (
+        <button className="btn-add" type="submit" onClick={handleSubmit}>
+          Add to Cart
+        </button>
+      )}
     </div>
   );
 };

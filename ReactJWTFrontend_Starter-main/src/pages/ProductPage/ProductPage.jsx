@@ -56,7 +56,7 @@ const ProductPage = ({}) => {
     <div>
       <h2 className="product-title">Our Products</h2>
 
-      <div>{getResults}</div>
+      <div className="list-style">{getResults}</div>
 
       <form onSubmit={priceSearch}>
         <label className="form-label">

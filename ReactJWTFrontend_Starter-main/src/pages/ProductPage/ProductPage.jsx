@@ -7,6 +7,8 @@ import "./ProductPage.css";
 const ProductPage = ({}) => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
+  const [searchPrice, setSearchPrice] = useState(false);
+
   useEffect(() => {
     getProduct();
   }, []);
@@ -23,18 +25,25 @@ const ProductPage = ({}) => {
   };
 
   const getResults = products.map((product, index) => {
-    {
-    }
     return (
-      <p className="list-style">
-        <Link to={`/item/${product.atomicNumber}`}>{product.name}</Link>
-        <div className="price">${product.price}.00</div>
-      </p>
+      <div>
+        {searchPrice ? (
+          <p className="list-style">
+            <Link to={`/item/${product.atomicNumber}`}>{product.name}</Link>
+            <div className="price">${product.price}.00</div>
+          </p>
+        ) : (
+          <p>
+            <Link to={`/item/${product.atomicNumber}`}>{product.name}</Link>
+          </p>
+        )}
+      </div>
     );
   });
   function priceSearch(e) {
     e.preventDefault();
     let diff = 0;
+    setSearchPrice(true);
     const searchResults = products.filter((product) => {
       diff = Math.abs(product.price - search);
       return diff <= 10;

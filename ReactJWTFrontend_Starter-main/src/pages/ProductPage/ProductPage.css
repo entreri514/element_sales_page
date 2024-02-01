@@ -4,8 +4,8 @@
 }
 .list-style {
   display: grid;
-  justify-content: space-between;
-  grid-template-columns: repeat(15, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0.25rem;
 }
 .price {
   color: blue;

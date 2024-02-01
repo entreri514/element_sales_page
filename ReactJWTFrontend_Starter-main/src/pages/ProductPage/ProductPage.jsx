@@ -33,7 +33,7 @@ const ProductPage = ({}) => {
             <div className="price">${product.price}.00</div>
           </p>
         ) : (
-          <p>
+          <p className="list-style">
             <Link to={`/item/${product.atomicNumber}`}>{product.name}</Link>
           </p>
         )}

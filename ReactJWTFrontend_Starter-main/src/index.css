@@ -16,7 +16,7 @@ main {
   margin: 0 auto;
   display: grid;
   place-content: center;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 body {
   margin-bottom: 100px;

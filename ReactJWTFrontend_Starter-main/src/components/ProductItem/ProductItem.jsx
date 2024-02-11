@@ -59,14 +59,19 @@ const ProductItem = () => {
           <video
             autoPlay
             loop
-            src={item.itemPic}
+            src={`/pics/${item.itemPic}.mp4`}
             alt="video"
             width="400"
             height="450"
             controls
           />
         ) : (
-          <img src={item.itemPic} alt="image" width="350" height="450" />
+          <img
+            src={`/pics/${item.itemPic}.jpg`}
+            alt="image"
+            width="350"
+            height="450"
+          />
         )}
         <div className="product-description">
           <h5>Atomic number: {item.atomicNumber}</h5>

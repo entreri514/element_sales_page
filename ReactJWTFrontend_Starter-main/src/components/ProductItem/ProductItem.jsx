@@ -10,7 +10,6 @@ const ProductItem = () => {
   const [isAdd, setIsAdd] = useState(false);
   const [user, token] = useAuth();
   let displayResults;
-
   useEffect(() => {
     getItem();
   }, []);
@@ -44,13 +43,15 @@ const ProductItem = () => {
           }
         );
         if (response.status === 201) {
+          setIsAdd(true);
           console.log("Added to cart.");
         }
       } catch (error) {
         console.warn("Unable to add item: ", error);
+        console.log("Token", token);
+        console.log("formdata", item.id);
       }
     }
-    setIsAdd(true);
   };
   displayResults = item.map((item, index) => {
     return (

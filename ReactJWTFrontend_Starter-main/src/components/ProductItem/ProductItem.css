@@ -1,6 +1,7 @@
 .product-details {
-  display: block;
+  display: flex;
   text-align: center;
+  justify-content: space-evenly;
 }
 .product-description {
   flex-wrap: initial;

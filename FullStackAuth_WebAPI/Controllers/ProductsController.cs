@@ -83,6 +83,7 @@ namespace FullStackAuth_WebAPI.Controllers
         
         public IActionResult Post([FromBody] Product data)
         {
+           
             try
             {
                 

@@ -3,13 +3,13 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./ProductItem.css";
 import useAuth from "../../hooks/useAuth";
-
 const ProductItem = () => {
   const { atomicNumber } = useParams();
   const [item, setItem] = useState([]);
   const [isAdd, setIsAdd] = useState(false);
   const [user, token] = useAuth();
   let displayResults;
+  let id;
   useEffect(() => {
     getItem();
   }, []);
@@ -26,33 +26,34 @@ const ProductItem = () => {
       console.warn("Error submitting form ", error);
     }
   };
+
   const handleSubmit = async (e) => {
-    if (!isAdd) {
-      e.preventDefault();
-      let productId = item.id;
-      console.log(item.id);
-      const formData = { productId };
-      try {
-        const response = await axios.post(
-          "https://localhost:5001/api/cartitem",
-          formData,
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        if (response.status === 201) {
-          setIsAdd(true);
-          console.log("Added to cart.");
+    e.preventDefault();
+    const ProductId = item.id;
+    const formData = { ProductId };
+    console.log(formData);
+    try {
+      const response = await axios.post(
+        `https://localhost:5001/api/cartitem?`,
+
+        formData,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
         }
-      } catch (error) {
-        console.warn("Unable to add item: ", error);
-        console.log("Token", token);
-        console.log("formdata", item.id);
+      );
+      if (response.status === 201) {
+        setIsAdd(true);
+        console.log("Added to cart.");
       }
+    } catch (error) {
+      console.warn("Unable to add item: ", error);
+      console.log("Token", token);
+      console.log("formdata", formData);
     }
   };
+
   displayResults = item.map((item, index) => {
     return (
       <div>
@@ -86,11 +87,16 @@ const ProductItem = () => {
           <h3>Price: ${item.price}.00</h3>
         </div>
         {isAdd ? (
-          <button className="btn-isadd" type="submit">
+          <button className="btn-isadd" value={item.id} type="submit">
             Add to Cart
           </button>
         ) : (
-          <button className="btn-add" type="submit" onClick={handleSubmit}>
+          <button
+            className="btn-add"
+            value={item.id}
+            type="submit"
+            onClick={handleSubmit}
+          >
             Add to Cart
           </button>
         )}

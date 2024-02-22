@@ -3,13 +3,17 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./ProductItem.css";
 import useAuth from "../../hooks/useAuth";
+import AddProduct from "../AddProduct/AddProduct";
+
 const ProductItem = () => {
   const { atomicNumber } = useParams();
   const [item, setItem] = useState([]);
   const [isAdd, setIsAdd] = useState(false);
   const [user, token] = useAuth();
+  const [id, setId] = useState([]);
+
   let displayResults;
-  let id;
+
   useEffect(() => {
     getItem();
   }, []);
@@ -24,33 +28,6 @@ const ProductItem = () => {
       }
     } catch (error) {
       console.warn("Error submitting form ", error);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const ProductId = item.id;
-    const formData = { ProductId };
-    console.log(formData);
-    try {
-      const response = await axios.post(
-        `https://localhost:5001/api/cartitem?`,
-
-        formData,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-      if (response.status === 201) {
-        setIsAdd(true);
-        console.log("Added to cart.");
-      }
-    } catch (error) {
-      console.warn("Unable to add item: ", error);
-      console.log("Token", token);
-      console.log("formdata", formData);
     }
   };
 
@@ -86,20 +63,7 @@ const ProductItem = () => {
           <div></div>
           <h3>Price: ${item.price}.00</h3>
         </div>
-        {isAdd ? (
-          <button className="btn-isadd" value={item.id} type="submit">
-            Add to Cart
-          </button>
-        ) : (
-          <button
-            className="btn-add"
-            value={item.id}
-            type="submit"
-            onClick={handleSubmit}
-          >
-            Add to Cart
-          </button>
-        )}
+        <AddProduct value={item.id} onChange={setId}></AddProduct>
       </div>
     );
   });

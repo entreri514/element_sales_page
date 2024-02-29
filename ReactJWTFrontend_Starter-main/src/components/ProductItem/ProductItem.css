@@ -1,7 +1,10 @@
+.title-color {
+  color: steelblue;
+}
 .product-details {
   display: flex;
   text-align: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .product-description {
   flex-wrap: initial;

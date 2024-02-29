@@ -7,7 +7,7 @@ import "./NavBar.css";
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
-  var getType = "Ingot";
+
   return (
     <div className="navBar">
       <ul>
@@ -40,6 +40,11 @@ const Navbar = () => {
         <li className="cart">
           <Link to="/cart" style={{ textDecoration: "none", color: "white" }}>
             <b>Cart</b>
+          </Link>
+        </li>
+        <li className="add">
+          <Link to="/add" style={{ textDecoration: "none", color: "orange" }}>
+            <b>Add Product</b>
           </Link>
         </li>
         <li>

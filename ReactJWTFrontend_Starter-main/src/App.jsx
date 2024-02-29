@@ -11,6 +11,7 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 import CartPage from "./pages/CartPage/CartPage";
 import CoinPage from "./pages/CoinPage/CoinPage";
 import PlasmaPage from "./pages/PlasmaPage/PlasmaPage";
+import AddProductPage from "./pages/AddProductPage/AddProductPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -42,6 +43,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/coins" element={<CoinPage />} />
         <Route path="/plasmas" element={<PlasmaPage />} />
+        <Route path="/add" element={<AddProductPage />} />
       </Routes>
 
       <Footer />

@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./ProductItem.css";
-import useAuth from "../../hooks/useAuth";
 import AddProduct from "../AddProduct/AddProduct";
 
 const ProductItem = () => {
   const { atomicNumber } = useParams();
   const [item, setItem] = useState([]);
-  const [isAdd, setIsAdd] = useState(false);
-  const [user, token] = useAuth();
   const [id, setId] = useState([]);
 
   let displayResults;
@@ -22,7 +19,7 @@ const ProductItem = () => {
       const response = await axios.get(
         `https://localhost:5001/api/products/${atomicNumber}`
       );
-      console.log("setItem=", response);
+
       if (response.status === 200) {
         setItem(response.data);
       }
@@ -34,6 +31,7 @@ const ProductItem = () => {
   displayResults = item.map((item, index) => {
     return (
       <div>
+        <h2 className="title-color">{item.name}</h2>
         {item.itemType === "Plasma" ? (
           <video
             autoPlay
@@ -68,12 +66,7 @@ const ProductItem = () => {
     );
   });
 
-  return (
-    <div className="product-details">
-      <h2 className="title-item">{item.name}</h2>
-      {displayResults}
-    </div>
-  );
+  return <div className="product-details">{displayResults}</div>;
 };
 
 export default ProductItem;

@@ -11,9 +11,3 @@
 .price {
   color: blue;
 }
-/* let thumb = `/pics/${item.itemPic}.jpg`;
-      if (item.itemType === "Plasma") thumb = `/pics/${item.itemPic}.mp4`;
-      console.log(thumb);
-      if (!item) {
-       return null; 
-      }; */

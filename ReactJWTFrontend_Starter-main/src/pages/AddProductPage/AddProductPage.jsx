@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AddField from "../../components/AddField/AddField";
+import "./AddProductPage.css";
 
 const AddProductPage = () => {
   const [atomicNumber, setAtomicNumber] = useState("");
@@ -10,6 +11,7 @@ const AddProductPage = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [productInfo, setProductInfo] = useState("");
+  const [productCare, setProductCare] = useState("");
   const [itemType, setItemType] = useState("");
   const [symbol, setSymbol] = useState("");
   const [density, setDensity] = useState("");
@@ -25,6 +27,7 @@ const AddProductPage = () => {
       price,
       description,
       productInfo,
+      productCare,
       itemType,
       symbol,
       density,
@@ -45,8 +48,8 @@ const AddProductPage = () => {
   };
   return (
     <form onSubmit={handleSubmit} className="flex-item">
-      <h1>Add a Product</h1>
-      <div>
+      <h1 className="title">Add a Product</h1>
+      <div className="field">
         <AddField
           label="Atomic Number"
           value={atomicNumber}
@@ -64,6 +67,11 @@ const AddProductPage = () => {
           label="Product Information"
           value={productInfo}
           onChange={setProductInfo}
+        />
+        <AddField
+          label="Product Care"
+          value={productCare}
+          onChange={setProductCare}
         />
         <AddField label="Item Type" value={itemType} onChange={setItemType} />
         <AddField label="Symbol" value={symbol} onChange={setSymbol} />

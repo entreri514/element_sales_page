@@ -42,6 +42,7 @@ function App() {
         <Route path="/item/:atomicNumber" element={<ProductItem />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/coins" element={<CoinPage />} />
+        <Route path="/rareearths" element={<RareEarthPage />} />
         <Route path="/plasmas" element={<PlasmaPage />} />
         <Route path="/add" element={<AddProductPage />} />
       </Routes>

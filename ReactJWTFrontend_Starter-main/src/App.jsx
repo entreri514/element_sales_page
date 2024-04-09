@@ -12,6 +12,7 @@ import CartPage from "./pages/CartPage/CartPage";
 import CoinPage from "./pages/CoinPage/CoinPage";
 import PlasmaPage from "./pages/PlasmaPage/PlasmaPage";
 import AddProductPage from "./pages/AddProductPage/AddProductPage";
+import RareEarthPage from "./pages/RareEarthPage/RareEarthPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";

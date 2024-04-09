@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Axios } from "axios";
+import axios from "axios";
 
 const RareEarthPage = ({}) => {
   const [rareEarths, setRareEarths] = useState([]);
@@ -20,8 +20,9 @@ const RareEarthPage = ({}) => {
   };
 
   const getResults = rareEarths
-    .filter((rareEarth) =>
-      rareEarth.atomicNumber.where(atomicNumber >= 57 && atomicNumber <= 71)
+    .filter(
+      (rareEarth) =>
+        rareEarth.atomicNumber >= 57 && rareEarth.atomicNumber <= 71
     )
     .map((rareEarth, index) => {
       return (
@@ -39,7 +40,13 @@ const RareEarthPage = ({}) => {
         </a>
       );
     });
-  return <div></div>;
+  return (
+    <div>
+      <h2 className="text-align">Our Rare Earths!</h2>
+
+      <div className="product-grid">{getResults}</div>
+    </div>
+  );
 };
 
 export default RareEarthPage;

@@ -37,6 +37,14 @@ const Navbar = () => {
             <b>Plasma</b>
           </Link>
         </li>
+        <li className="rareearths">
+          <Link
+            to="/rareearths"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <b>Rare Earths</b>
+          </Link>
+        </li>
         <li className="cart">
           <Link to="/cart" style={{ textDecoration: "none", color: "white" }}>
             <b>Cart</b>
